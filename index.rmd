@@ -1,0 +1,121 @@
+---
+title: "Мой отчет"
+author: "Лукашова Т."
+date: '30 марта 2017 г '
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+#Задание 1
+
+```{r, echo = TRUE}
+zan1 = list(mean(iris$Sepal.Length), mean(iris$Sepal.Width), mean(iris$Petal.Length), mean(iris$Petal.Width)) 
+zan1 
+names(zan1) = c("Длина чашелистиков", "Ширина чашелистиков", "Длина лепестков", "Ширина лепестков")
+``` 
+
+#Задание 2
+
+```{r, echo = TRUE}
+zan1 
+z=iris 
+z$Species=NULL 
+z 
+z[1,1:4] 
+sum(z[1,1:4]) 
+sum(z[1,1:4])/4 
+y=0 
+for(i in 1:150) 
+{x = sum(z[i,1:4])/4 
+y = c(x,y)} 
+y
+``` 
+
+#Задание 3
+
+```{r, echo = TRUE}
+DNA = c("A","C","G","T") 
+DNA = sample(DNA, size = 1000, replace = T); DNA 
+DNA = factor(DNA) 
+DNA 
+summary(DNA) 
+length(DNA) 
+dna_at = c(summary(DNA)) 
+dna_at = dna_at[c("A","T")] 
+dna_at 
+y = dna_at/1000 
+y 
+dna_at = c(dna_at, y) 
+dna_at
+```
+
+#Задание 4
+
+```{r, echo = TRUE}
+LETTERS 
+abc = sample(LETTERS, 10000, T) 
+v=0 
+for(i in 1:length(abc)) 
++{if(abc[i]=="A"|abc[i]=="E"|abc[i]=="I"|abc[i]=="O"|abc[i]=="U"|abc[i]=="Y") 
++{v=v+1} else {v=v+0}} 
+v
+```
+
+#Задание 5
+
+```{r, echo = TRUE}
+iris 
+x = iris 
+x$Sepal.Length = NULL 
+x$Sepal.Width = NULL 
+x$Petal.Width = NULL 
+x 
+x[1:50,1] 
+mean(x[1:50,1]) 
+setosa = mean(x[1:50,1]) 
+versicolor = mean(x[51:100,1]) 
+versicolor 
+virginica = mean(x[101:150,1]) 
+virginica 
+spec = c(setosa, versicolor, virginica) 
+spec 
+names(spec) = c("setosa","versicolor","virginica") 
+spec 
+sort(spec) 
+levels(iris$Species) = names(sort(tapply(iris$Petal.Length,iris$Species, mean))) 
+names(sort(tapply(iris$Petal.Length,iris$Species, mean)))
+```
+
+#Задание 6
+
+```{r, echo = TRUE}
+x = c(21, 34, -1, -10, 0, 38, 19, 2) 
+median(x) 
+x = c(21, 34, -1, -10, 0, 38, 19, 2) 
+x = sort(x) 
+x 
+x[(length(x)/2)] 
+x[round(length(x)/2)] 
+med = function(p) 
+{sort(p) 
+return(p[round(length(p)/2)])} 
+x 
+med(x) 
+``` 
+
+#7 задание
+
+```
+library.ggplot2
+ggplot(iris, aes(x = Petal.Length, y = Sepal.Length, col = Species)) + geom_point(alpha = 0.4)
+```
+
+#8 задание
+
+```
+tapply(diamonds$price[diamonds$price >1000], diamonds$clarity[diamonds$price >1000], mean)
+```
